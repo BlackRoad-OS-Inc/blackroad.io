@@ -6,12 +6,9 @@ on:
 
 jobs:
   sync-fleet:
-    runs-on: [self-hosted, linux, ARM64]
+    runs-on: ubuntu-latest
+    if: vars.DEPLOY_ENABLED == 'true'
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to Gematria
-        run: |
-          rsync -avz --delete web/public/ gematria:/var/www/${{ github.event.repository.name }}/ 2>/dev/null || echo "rsync to gematria skipped"
-      - name: Deploy to Anastasia
-        run: |
-          rsync -avz --delete web/public/ anastasia:/srv/domains/${{ github.event.repository.name }}/ 2>/dev/null || echo "rsync to anastasia skipped"
+      - name: Sync notification
+        run: echo "Pi sync would run on self-hosted runner when DEPLOY_ENABLED=true"

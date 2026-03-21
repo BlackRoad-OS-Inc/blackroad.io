@@ -4,20 +4,20 @@ on:
     branches: [main]
   workflow_dispatch:
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: vars.DEPLOY_ENABLED == 'true'
     steps:
       - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
-      - name: Pull Vercel Environment
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} 2>/dev/null || echo "Vercel pull skipped"
-      - name: Build
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} 2>/dev/null || echo "Vercel build skipped"
-      - name: Deploy to Production
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} 2>/dev/null || echo "Vercel deploy skipped — set VERCEL_TOKEN secret"
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+          vercel build --prod --token=$VERCEL_TOKEN
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN

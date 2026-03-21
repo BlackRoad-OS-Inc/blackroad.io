@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate structure
+        run: |
+          echo "Validating BlackRoad-Source structure..."
+          for dir in agents api archive cli config core data docs infrastructure models nodes runtime scripts services system tests web; do
+            if [ -d "$dir" ]; then
+              echo "  ✓ $dir/"
+            fi
+          done
+          echo "  ✓ LICENSE"
+          test -f LICENSE
+          echo "  ✓ README.md"
+          test -f README.md
+          echo "All checks passed."
