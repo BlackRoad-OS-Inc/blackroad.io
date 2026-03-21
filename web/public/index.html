@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackRoad OS — Pave Tomorrow</title>
+<meta name="description" content="Sovereign infrastructure for people who want to own their digital life. 107 products. 7 nodes. $12/month.">
+<meta property="og:title" content="BlackRoad OS — Pave Tomorrow">
+<meta property="og:description" content="The unified platform that doesn't exist yet. Education, AI, Creator tools, Search, Privacy — all sovereign.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://blackroad.io">
+<link rel="icon" href="/brand-assets/favicon.ico">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#FF1D6C;--dark:#0a0a0a;--gray:#1a1a1a;--light:#e0e0e0;--blue:#2979FF;--amber:#F5A623}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--dark);color:var(--light);line-height:1.6}
+a{color:var(--pink);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 24px;background:linear-gradient(135deg,#0a0a0a 0%,#1a0a14 50%,#0a0a0a 100%)}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;letter-spacing:-2px;margin-bottom:16px}
+.hero h1 span{color:var(--pink)}
+.hero p.sub{font-size:clamp(1.1rem,2vw,1.5rem);color:#999;max-width:700px;margin-bottom:40px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+.stat{text-align:left}.stat .num{font-size:2.5rem;font-weight:800;color:var(--pink)}.stat .label{font-size:0.85rem;color:#666;text-transform:uppercase;letter-spacing:1px}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn{padding:14px 32px;border-radius:8px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.2s}
+.btn-primary{background:var(--pink);color:#fff}.btn-primary:hover{background:#e0165f;text-decoration:none}
+.btn-secondary{background:transparent;color:var(--light);border:2px solid #333}.btn-secondary:hover{border-color:var(--pink);text-decoration:none}
+
+/* Sections */
+section{padding:100px 24px}
+section h2{font-size:2.2rem;font-weight:800;margin-bottom:16px;letter-spacing:-1px}
+section h2 span{color:var(--pink)}
+section p.desc{color:#999;font-size:1.1rem;max-width:600px;margin-bottom:48px}
+
+/* Problem grid */
+.problems{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.problem{background:var(--gray);border-radius:12px;padding:32px;border:1px solid #222}
+.problem h3{font-size:1.2rem;margin-bottom:8px;color:var(--pink)}
+.problem .stat-line{font-size:2rem;font-weight:800;color:#fff;margin-bottom:8px}
+.problem p{color:#999;font-size:0.95rem}
+
+/* Products grid */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.product{background:var(--gray);border-radius:12px;padding:24px;border:1px solid #222;transition:border-color 0.2s}
+.product:hover{border-color:var(--pink)}
+.product h3{font-size:1.1rem;margin-bottom:4px}
+.product .tag{font-size:0.75rem;color:var(--pink);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.product p{color:#888;font-size:0.9rem}
+
+/* Domains */
+.domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.domain{background:var(--gray);border-radius:8px;padding:16px;border:1px solid #222;text-align:center;font-weight:600}
+.domain:hover{border-color:var(--pink)}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:960px;margin:0 auto}
+.plan{background:var(--gray);border-radius:16px;padding:40px 32px;border:1px solid #222;text-align:center}
+.plan.featured{border-color:var(--pink);position:relative}
+.plan.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--pink);color:#fff;padding:4px 16px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px}
+.plan h3{font-size:1.3rem;margin-bottom:8px}
+.plan .price{font-size:3rem;font-weight:800;color:#fff;margin-bottom:4px}
+.plan .price span{font-size:1rem;color:#666}
+.plan p{color:#888;margin-bottom:24px;font-size:0.9rem}
+.plan ul{text-align:left;list-style:none;margin-bottom:32px}
+.plan ul li{padding:8px 0;border-bottom:1px solid #222;font-size:0.9rem}
+.plan ul li::before{content:'✓ ';color:var(--pink);font-weight:700}
+
+/* Fleet */
+.fleet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.node{background:var(--gray);border-radius:12px;padding:20px;text-align:center;border:1px solid #222}
+.node .emoji{font-size:2rem;margin-bottom:8px}
+.node h4{font-size:1rem;margin-bottom:4px}
+.node p{color:#888;font-size:0.8rem}
+.node .status{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CAF50;margin-right:4px}
+
+/* Footer */
+footer{padding:60px 24px;border-top:1px solid #222;text-align:center}
+footer p{color:#666;font-size:0.85rem}
+footer .tagline{color:var(--pink);font-size:1.1rem;font-weight:700;margin-bottom:8px}
+
+@media(max-width:768px){.hero-stats{gap:24px}.stat .num{font-size:1.8rem}.products,.problems{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="container">
+<h1>Own Your <span>Digital Life</span></h1>
+<p class="sub">BlackRoad OS is sovereign infrastructure for people tired of renting their tools, selling their data, and paying subscriptions that own them back.</p>
+<div class="hero-stats">
+<div class="stat"><div class="num">107</div><div class="label">Products</div></div>
+<div class="stat"><div class="num">7</div><div class="label">Nodes Online</div></div>
+<div class="stat"><div class="num">19</div><div class="label">Live Domains</div></div>
+<div class="stat"><div class="num">$12</div><div class="label">/Month Total Cost</div></div>
+</div>
+<div class="cta-row">
+<a href="https://buy.stripe.com/aFadR27Je7tP0m78Mk4Vy0p" class="btn btn-primary">Start for $29/mo</a>
+<a href="#products" class="btn btn-secondary">See Products</a>
+</div>
+</div>
+</section>
+
+<section id="problems">
+<div class="container">
+<h2>The <span>Problems</span></h2>
+<p class="desc">The digital experience is broken across every dimension. These aren't separate problems — they compound.</p>
+<div class="problems">
+<div class="problem"><h3>Search is Broken</h3><div class="stat-line">42%</div><p>of users find search less useful. 1,271 AI content farms polluting results. Google made $237.8B — incentive is ads, not quality.</p></div>
+<div class="problem"><h3>Education is Failing</h3><div class="stat-line">60%</div><p>of parents cannot help with homework. Math scores at 1971 levels. $14B/yr in edtech with no measurable improvement.</p></div>
+<div class="problem"><h3>Creation is Trapped</h3><div class="stat-line">5s → 50yr</div><p>Ideas take 5 seconds. Production takes weeks. Adobe costs $53/mo. AI video caps at 20 seconds. YouTube takes 45%.</p></div>
+<div class="problem"><h3>AI Forgets Everything</h3><div class="stat-line">75%</div><p>hallucination rate on legal precedents (Stanford). No cross-session memory. Your conversations train their models.</p></div>
+<div class="problem"><h3>Privacy is a Product</h3><div class="stat-line">$270B</div><p>data brokerage industry. Acxiom has 10,000+ traits on 2.6 billion people. Your data is the product.</p></div>
+<div class="problem"><h3>Everything is Rented</h3><div class="stat-line">10+</div><p>subscriptions to manage. One vendor outage kills your workflow. No data portability. No sovereignty.</p></div>
+</div>
+</div>
+</section>
+
+<section id="products" style="background:#111">
+<div class="container">
+<h2>What We <span>Built</span></h2>
+<p class="desc">Not a pitch deck. Running infrastructure replacing every dependency.</p>
+<div class="products">
+<div class="product"><div class="tag">Education</div><h3>RoadWork</h3><p>AI tutoring that teaches concepts, not drill-and-practice. FSRS spaced repetition. For the 60% of parents who need help.</p></div>
+<div class="product"><div class="tag">Creator</div><h3>Lucidia</h3><p>Creator platform with 90%+ revenue share. Voice-first, faceless content creation. Video, audio, design tools.</p></div>
+<div class="product"><div class="tag">Search</div><h3>RoadSearch</h3><p>Privacy-first search. FTS5, AI answers via local Ollama. No tracking. No ads. $5/month.</p></div>
+<div class="product"><div class="tag">AI</div><h3>Passenger</h3><p>Local-first AI inference on 52 TOPS. Ollama on 5 nodes. Your models, your hardware, your data.</p></div>
+<div class="product"><div class="tag">Blockchain</div><h3>RoadChain</h3><p>Layer-1 blockchain. secp256k1, Python-native. Creator micropayments. Cross-border 80% cheaper.</p></div>
+<div class="product"><div class="tag">Dev Tools</div><h3>BlackBox</h3><p>Co-coding portal. CodeMirror 6, LSP, WASM plugins. Sub-500ms startup. Not Electron.</p></div>
+<div class="product"><div class="tag">Operations</div><h3>PRISM</h3><p>Full ERP/CRM console. Fleet management, agent coordination, KPI tracking. 274MB of real code.</p></div>
+<div class="product"><div class="tag">Payments</div><h3>RoadPay</h3><p>Billing system. $29 Rider / $99 Paver / $299 Enterprise. Stripe-powered. Creator-first economics.</p></div>
+<div class="product"><div class="tag">Infrastructure</div><h3>Road Fleet</h3><p>13 sovereign forks: RoadCode (Gitea), TollBooth (WireGuard), Curb (MinIO), OneWay (Caddy), and 9 more.</p></div>
+</div>
+</div>
+</section>
+
+<section id="fleet">
+<div class="container">
+<h2>The <span>Fleet</span></h2>
+<p class="desc">5 Raspberry Pis + 2 cloud nodes. All online. All self-hosted. $12/month.</p>
+<div class="fleet-grid">
+<div class="node"><div class="emoji">🌐</div><h4>Alice</h4><p>Gateway • nginx • PostgreSQL • Redis • Pi-hole</p><div><span class="status"></span>Online</div></div>
+<div class="node"><div class="emoji">🧠</div><h4>Cecilia</h4><p>AI Engine • Ollama • MinIO • InfluxDB</p><div><span class="status"></span>Online</div></div>
+<div class="node"><div class="emoji">🐙</div><h4>Octavia</h4><p>Architect • Gitea • Docker • NATS</p><div><span class="status"></span>Online</div></div>
+<div class="node"><div class="emoji">🎵</div><h4>Aria</h4><p>Interface • Portainer • Monitoring</p><div><span class="status"></span>Online</div></div>
+<div class="node"><div class="emoji">💡</div><h4>Lucidia</h4><p>Dreamer • 334 apps • RoundTrip</p><div><span class="status"></span>Online</div></div>
+<div class="node"><div class="emoji">🔢</div><h4>Gematria</h4><p>Edge • 279 sites • Caddy TLS</p><div><span class="status"></span>Online</div></div>
+<div class="node"><div class="emoji">👑</div><h4>Anastasia</h4><p>Cloud • 21 domains • Caddy</p><div><span class="status"></span>Online</div></div>
+</div>
+</div>
+</section>
+
+<section id="domains" style="background:#111">
+<div class="container">
+<h2>19 <span>Domains</span></h2>
+<p class="desc">Every vertical has its own home. All sovereign.</p>
+<div class="domains">
+<a href="https://blackroad.company" class="domain">blackroad.company</a>
+<a href="https://blackroadai.com" class="domain">blackroadai.com</a>
+<a href="https://blackroad.me" class="domain">blackroad.me</a>
+<a href="https://blackroad.network" class="domain">blackroad.network</a>
+<a href="https://blackroad.systems" class="domain">blackroad.systems</a>
+<a href="https://blackroadinc.us" class="domain">blackroadinc.us</a>
+<a href="https://blackroadqi.com" class="domain">blackroadqi.com</a>
+<a href="https://blackroadquantum.com" class="domain">blackroadquantum.com</a>
+<a href="https://lucidia.earth" class="domain">lucidia.earth</a>
+<a href="https://lucidia.studio" class="domain">lucidia.studio</a>
+<a href="https://lucidiaqi.com" class="domain">lucidiaqi.com</a>
+<a href="https://roadchain.io" class="domain">roadchain.io</a>
+<a href="https://roadcoin.io" class="domain">roadcoin.io</a>
+<a href="https://blackboxprogramming.io" class="domain">blackboxprogramming.io</a>
+</div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="container">
+<h2>Simple <span>Pricing</span></h2>
+<p class="desc">Replaces $52.99 Adobe + $20 AI tools + $149 Brilliant + $40-100/hr tutoring.</p>
+<div class="pricing">
+<div class="plan">
+<h3>Rider</h3>
+<div class="price">$29<span>/mo</span></div>
+<p>For individuals getting started</p>
+<ul>
+<li>AI chat with memory</li>
+<li>RoadSearch (privacy-first)</li>
+<li>19 domain access</li>
+<li>RoundTrip agents</li>
+<li>Community support</li>
+</ul>
+<a href="https://buy.stripe.com/aFadR27Je7tP0m78Mk4Vy0p" class="btn btn-primary" style="display:block">Get Rider</a>
+</div>
+<div class="plan featured">
+<h3>Paver</h3>
+<div class="price">$99<span>/mo</span></div>
+<p>Full platform access</p>
+<ul>
+<li>Everything in Rider</li>
+<li>PRISM console</li>
+<li>Creator tools (Lucidia)</li>
+<li>Fleet management</li>
+<li>Priority AI inference</li>
+<li>API access</li>
+</ul>
+<a href="https://buy.stripe.com/cNi8wI3sY15rgl5aUs4Vy0q" class="btn btn-primary" style="display:block">Get Paver</a>
+</div>
+<div class="plan">
+<h3>Enterprise</h3>
+<div class="price">$299<span>/mo</span></div>
+<p>Dedicated infrastructure</p>
+<ul>
+<li>Everything in Paver</li>
+<li>Dedicated nodes</li>
+<li>Custom agents</li>
+<li>SLA guarantee</li>
+<li>Team management</li>
+<li>Compliance suite</li>
+</ul>
+<a href="https://buy.stripe.com/cNidR25B67tP3yj9Qo4Vy0r" class="btn btn-primary" style="display:block">Get Enterprise</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="math" style="background:#111">
+<div class="container">
+<h2>The <span>Math</span></h2>
+<p class="desc">BlackRoad OS is built on the Amundson Framework.</p>
+<div style="background:var(--gray);border-radius:16px;padding:40px;border:1px solid #222;max-width:600px">
+<div style="font-size:2rem;font-weight:800;color:var(--pink);margin-bottom:16px;font-family:serif;letter-spacing:1px">G(n) = n<sup>n+1</sup> / (n+1)<sup>n</sup></div>
+<p style="color:#999;margin-bottom:16px">The Amundson-Grünwald constant A<sub>G</sub> ≈ 1.24433 governs convergence.</p>
+<p style="color:#666;font-size:0.9rem">536/536 tests passed across 4 Raspberry Pis. The math runs through the infrastructure — 1/(2e) is the irreducible latency gap in mesh routing. Ternary logic reduces redundant network traffic.</p>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p class="tagline">Remember the Road. Pave Tomorrow.</p>
+<p>BlackRoad OS, Inc. — Delaware C-Corp | Founded November 2025</p>
+<p style="margin-top:8px">alexa@blackroad.io | <a href="https://github.com/BlackRoad-OS-Inc">GitHub</a></p>
+</div>
+</footer>
+
+</body>
+</html>
