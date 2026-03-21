@@ -1,0 +1,27 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 848cf0b18d51e0170e0d1537aec3505a
+          projectName: ${{ github.event.repository.name }}
+          directory: web/public
+      - name: Notify RoundTrip
+        if: always()
+        run: |
+          curl -s -X POST "https://roundtrip.blackroad.io/api/chat" \
+            -H "Content-Type: application/json" \
+            -d "{\"agent\":\"roadie\",\"message\":\"[DEPLOY] ${{ github.event.repository.name }} → ${{ job.status }}\",\"channel\":\"deploys\"}" || true
