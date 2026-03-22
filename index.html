@@ -1,387 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" sizes="32x32" href="https://images.blackroad.io/brand/br-square-32.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="https://images.blackroad.io/brand/br-square-192.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="https://images.blackroad.io/brand/apple-touch-icon.png" />
-<meta property="og:image" content="https://images.blackroad.io/brand/br-square-512.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:image" content="https://images.blackroad.io/brand/br-square-512.png" />
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#000000">
-<title>BlackRoad OS — Pave Tomorrow.</title>
-<meta name="description" content="BlackRoad OS is a sovereign AI platform with persistent memory, local inference on 5 Raspberry Pi nodes, 69 agents, and 275+ repositories. Education-first: AI tutoring, homework help, STEM visualization. Your AI. Your hardware. Your rules. $20/mo.">
-<link rel="canonical" href="https://blackroad.io">
-<meta property="og:url" content="https://blackroad.io">
-<meta property="og:title" content="BlackRoad OS — Sovereign AI Operating System">
-<meta property="og:description" content="AI with persistent memory running on your hardware. 69 agents, 5 Pi nodes, 52 TOPS. Education, creation, search — one platform. $20/mo.">
-<meta name="keywords" content="AI operating system, sovereign AI, local inference, Raspberry Pi, AI tutoring, homework help, persistent memory, self-hosted, BlackRoad OS">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BlackRoad OS","applicationCategory":"OperatingSystem","operatingSystem":"Linux (Raspberry Pi)","description":"Sovereign AI operating system with persistent memory, local inference, 69 agents, and education-first design. Runs on 5 Raspberry Pi nodes with 52 TOPS of neural compute.","url":"https://blackroad.io","author":{"@type":"Organization","name":"BlackRoad OS, Inc.","url":"https://blackroad.io","founder":{"@type":"Person","name":"Alexa Louise Amundson"},"foundingDate":"2025-11-17","address":{"@type":"PostalAddress","addressRegion":"DE","addressCountry":"US"}},"offers":[{"@type":"Offer","name":"Student","price":"20","priceCurrency":"USD","description":"AI tutoring, homework help, persistent memory, 1 device"},{"@type":"Offer","name":"Family","price":"35","priceCurrency":"USD","description":"Up to 5 members, parent dashboard, progress tracking"},{"@type":"Offer","name":"Pro","price":"50","priceCurrency":"USD","description":"Unlimited devices, multi-agent access, API, priority support"}],"featureList":["Persistent cross-session memory","Local AI inference (no cloud)","69 AI agents","Education: math, science, reading, writing","STEM visualization","Content creation suite","Semantic search","Privacy-first (data never leaves your network)"]}
-</script>
-<link rel="stylesheet" href="../_shared/design.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackRoad OS</title>
+<meta name="description" content="BlackRoad OS — Pave Tomorrow.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  body { padding-bottom: 70px; }
+*{margin:0;padding:0;box-sizing:border-box;shape-rendering:geometricPrecision}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-text-stroke:.2px rgba(255,255,255,.1);scroll-behavior:smooth}
+:root{
+  --g:linear-gradient(90deg,#FF6B2B,#FF2255,#CC00AA,#8844FF,#4488FF,#00D4FF);
+  --g135:linear-gradient(135deg,#FF6B2B,#FF2255,#CC00AA,#8844FF,#4488FF,#00D4FF);
+  --bg:#000;--white:#fff;--black:#000;--border:#1a1a1a;
+  --sg:'Space Grotesk',sans-serif;--jb:'JetBrains Mono',monospace;
+}
+body{background:var(--bg);color:var(--white);font-family:var(--sg);overflow-x:hidden}
 
-  /* Hero — app-like, action first */
-  .app-hero {
-    min-height: calc(100vh - 70px);
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    padding: 80px 20px 40px; text-align: center;
-  }
-  .app-hero h1 {
-    font-size: clamp(2.2rem, 8vw, 4.5rem);
-    margin-bottom: 12px;
-  }
-  .app-hero .tagline {
-    font-size: 1rem; color: var(--subtle);
-    margin-bottom: 32px; max-width: 300px;
-  }
+/* ═══ GRAD BAR ═══ */
+.grad-bar{height:4px;background:var(--g);image-rendering:crisp-edges}
 
-  /* Search/voice bar */
-  .hero-input {
-    width: 100%; max-width: 500px;
-    margin-bottom: 24px;
-  }
+/* ═══ NAV ═══ */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:700;font-size:20px;color:var(--white);display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:28px;height:4px;border-radius:2px;background:var(--g);image-rendering:crisp-edges}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--white);opacity:.5;text-decoration:none;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{display:flex;gap:10px}
+.btn-outline{padding:8px 20px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--white);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sg);transition:border-color .2s}
+.btn-outline:hover{border-color:#444}
+.btn-solid{padding:8px 20px;border:none;border-radius:6px;background:var(--white);color:var(--black);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sg)}
 
-  /* Quick actions */
-  .quick-actions {
-    width: 100%; max-width: 500px;
-    display: flex; flex-direction: column; gap: 12px;
-    margin-bottom: 32px;
-  }
-  @media (min-width: 400px) {
-    .quick-actions { flex-direction: row; }
-  }
+/* ═══ HERO ═══ */
+.hero{text-align:center;padding:120px 48px 80px;position:relative}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.06;pointer-events:none}
+.orb-1{width:400px;height:400px;background:#8844FF;top:-150px;left:-5%}
+.orb-2{width:350px;height:350px;background:#00D4FF;top:-100px;right:-5%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);margin-bottom:32px}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--g135)}
+.hero h1{font-size:64px;font-weight:700;color:var(--white);line-height:1.08;margin-bottom:24px;max-width:780px;margin-left:auto;margin-right:auto;letter-spacing:-.02em}
+.hero p{font-size:18px;color:var(--white);opacity:.45;max-width:500px;margin:0 auto 48px;line-height:1.7}
+.hero-cta{display:flex;gap:16px;justify-content:center}
+.btn-lg{padding:14px 36px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sg)}
+.btn-lg-solid{background:var(--white);color:var(--black);border:none}
+.btn-lg-outline{background:transparent;color:var(--white);border:1px solid var(--border);transition:border-color .2s}
+.btn-lg-outline:hover{border-color:#444}
 
-  /* Products section */
-  .products { padding: 32px 16px; }
-  .products h2 { text-align: center; margin-bottom: 24px; font-size: 1.5rem; }
+/* ═══ TERMINAL PREVIEW ═══ */
+.terminal-wrap{max-width:700px;margin:-20px auto 0;position:relative;z-index:1}
+.terminal{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.terminal-header{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.terminal-dot{width:10px;height:10px;border-radius:50%;border:1px solid var(--border)}
+.terminal-title{font-family:var(--jb);font-size:11px;color:var(--white);opacity:.3;margin-left:auto}
+.terminal-body{padding:20px;font-family:var(--jb);font-size:13px;color:var(--white);opacity:.6;line-height:2}
+.terminal-body .prompt{opacity:.3}
+.terminal-body .cmd{opacity:.8}
+.terminal-body .out{opacity:.4}
+.terminal-accent{height:2px;background:var(--g);image-rendering:crisp-edges}
 
-  /* Scrollable product rows */
-  .product-row {
-    display: flex; gap: 12px; overflow-x: auto;
-    padding: 4px 0 16px; scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .product-row::-webkit-scrollbar { display: none; }
-  .product-row .action-card {
-    min-width: 140px; flex-shrink: 0;
-    scroll-snap-align: start;
-  }
+/* ═══ SECTIONS ═══ */
+.section{max-max-width:1100px;width:100%;margin:0 auto;padding:80px 48px}
+.section-label{font-family:var(--jb);font-size:10px;color:var(--white);opacity:.25;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:32px;font-weight:700;color:var(--white);margin-bottom:12px;letter-spacing:-.015em}
+.section-desc{font-size:14px;color:var(--white);opacity:.4;max-width:460px;margin-bottom:48px}
 
-  .row-label {
-    font-family: var(--jb); font-size: 0.68rem;
-    color: var(--muted); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 8px;
-    padding-left: 4px;
-  }
+/* ═══ LAYER STACK — lined rows ═══ */
+.layer-stack{border-top:1px solid var(--border)}
+.layer{display:grid;grid-template-columns:120px 1fr 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--border);align-items:start}
+.layer-num{font-family:var(--jb);font-size:10px;color:var(--white);opacity:.2;letter-spacing:.08em;text-transform:uppercase;padding-top:4px}
+.layer-name{font-size:16px;font-weight:600;color:var(--white)}
+.layer-desc{font-size:13px;color:var(--white);opacity:.4;line-height:1.7}
+.layer-tech{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.layer-tag{padding:3px 8px;border:1px solid var(--border);border-radius:3px;font-family:var(--jb);font-size:10px;color:var(--white);opacity:.4}
 
-  /* Live stats ticker */
-  .ticker {
-    display: flex; gap: 16px; overflow-x: auto;
-    padding: 16px 0; scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .ticker::-webkit-scrollbar { display: none; }
-  .ticker-item {
-    flex-shrink: 0; text-align: center;
-    padding: 0 8px;
-  }
-  .ticker-num {
-    font-family: var(--jb); font-size: 1.4rem; font-weight: 800;
-    background: var(--grad); -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .ticker-label {
-    font-family: var(--jb); font-size: 0.55rem;
-    color: var(--muted); letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+/* ═══ NODE GRID — outlined cards ═══ */
+.node-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.node-card{border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;transition:border-color .2s}
+.node-card:hover{border-color:#333}
+.node-avatar{width:48px;height:48px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:var(--white);position:relative;overflow:hidden}
+.node-avatar::before{content:'';position:absolute;inset:0;background:var(--g135);opacity:.1}
+.node-ring{position:absolute;inset:-2px;border-radius:50%;border:2px solid transparent;background:var(--g);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:2px}
+.node-name{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px}
+.node-role{font-size:11px;color:var(--white);opacity:.3;margin-bottom:12px}
+.node-stat{font-family:var(--jb);font-size:10px;color:var(--white);opacity:.25;line-height:1.8}
+.node-status{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:11px;color:var(--white);opacity:.4}
+.node-status-dot{width:6px;height:6px;border-radius:50%;background:var(--g135)}
+.node-status-dot.off{background:none;border:1px solid var(--white);opacity:.3;width:5px;height:5px}
+
+/* ═══ CODE INSTALL ═══ */
+.install-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:600px}
+.install-grad{height:2px;background:var(--g);image-rendering:crisp-edges}
+.install-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.install-lang{font-family:var(--jb);font-size:10px;color:var(--white);opacity:.3}
+.install-copy{padding:4px 10px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--white);opacity:.3;font-size:11px;cursor:pointer;font-family:var(--jb)}
+.install-body{padding:20px;font-family:var(--jb);font-size:13px;color:var(--white);opacity:.7;line-height:1.8}
+
+/* ═══ METRICS ═══ */
+.metrics-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.metric{text-align:center}
+.metric-val{font-size:36px;font-weight:700;color:var(--white)}
+.metric-label{font-family:var(--jb);font-size:10px;color:var(--white);opacity:.3;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+
+/* ═══ CTA ═══ */
+.cta{text-align:center;padding:80px 48px}
+.cta-box{max-width:700px;margin:0 auto;padding:64px;border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g)}
+.cta-box h2{font-size:28px;font-weight:700;color:var(--white);margin-bottom:12px;letter-spacing:-.015em}
+.cta-box p{font-size:14px;color:var(--white);opacity:.4;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto}
+
+/* ═══ FOOTER ═══ */
+footer{border-top:1px solid var(--border);padding:48px;display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-weight:700;font-size:16px;color:var(--white)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--white);opacity:.4;text-decoration:none;transition:opacity .2s}
+.footer-links a:hover{opacity:1}
+.footer-copy{font-size:12px;color:var(--white);opacity:.2}
+
+@media(max-max-width:1024px;width:100%){.node-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){
+  nav{padding:14px 20px;flex-wrap:wrap;gap:12px}.nav-links{display:none}
+  .hero{padding:80px 20px 60px}.hero h1{font-size:36px}
+  .hero-cta{flex-direction:column;align-items:center}
+  .terminal-wrap{margin:0 20px}
+  .section{padding:48px 20px}
+  .layer{grid-template-columns:1fr;gap:8px}
+  .node-grid{grid-template-columns:1fr 1fr}
+  .metrics-bar{grid-template-columns:repeat(2,1fr);gap:24px}
+  .cta{padding:48px 20px}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 20px}
+}
 </style>
-</head>
-<body class="dot-bg has-bottom-bar">
-
-  <!-- Minimal nav -->
-  <nav style="justify-content:center;">
-    <div class="nav-logo" style="font-size:1.2rem;">BlackRoad OS</div>
-  </nav>
-
-  <!-- Hero — action first -->
-  <div class="app-hero">
-    <h1>Pave<br>Tomorrow.</h1>
-    <p class="tagline">Your AI. Your hardware. Your rules.</p>
-
-    <!-- Voice/text input -->
-    <div class="hero-input">
-      <div class="voice-bar">
-        <input type="text" id="cmd" placeholder="What do you want to build?" autocomplete="off">
-        <button class="voice-btn" id="mic" onclick="toggleVoice()" aria-label="Voice">🎤</button>
-      </div>
-    </div>
-
-    <!-- Two big actions -->
-    <div class="quick-actions">
-      <a href="https://chat.blackroad.io" class="action-btn">Talk to Lucidia</a>
-      <a href="https://roadcode.blackroad.io" class="action-btn-ghost">Open RoadCode</a>
-    </div>
-
-    <!-- Live stat pills -->
-    <div class="stat-pills" id="pills">
-      <div class="stat-pill"><span class="num" id="p-repos">615</span><span class="lbl">repos</span></div>
-      <div class="stat-pill"><span class="num" id="p-agents">60</span><span class="lbl">agents</span></div>
-      <div class="stat-pill"><span class="num" id="p-sites">238</span><span class="lbl">sites</span></div>
-      <div class="stat-pill"><span class="num" id="p-tops">52</span><span class="lbl">TOPS</span></div>
-    </div>
-  </div>
-
-  <!-- Products — swipeable rows -->
-  <div class="products">
-    <h2>Products</h2>
-
-    <div class="row-label">Create</div>
-    <div class="product-row">
-      <a href="https://canvas.blackroad.io" class="action-card"><span class="icon">🎨</span><span class="label">Canvas</span><span class="sub">Design</span></a>
-      <a href="https://write.blackroad.io" class="action-card"><span class="icon">✍️</span><span class="label">Writing</span><span class="sub">Publish</span></a>
-      <a href="https://video.blackroad.io" class="action-card"><span class="icon">🎬</span><span class="label">Video</span><span class="sub">Edit</span></a>
-      <a href="https://cadence.blackroad.io" class="action-card"><span class="icon">🎵</span><span class="label">Cadence</span><span class="sub">Music</span></a>
-      <a href="https://game.blackroad.io" class="action-card"><span class="icon">🎮</span><span class="label">Genesis</span><span class="sub">Games</span></a>
-      <a href="https://tube.blackroad.io" class="action-card"><span class="icon">📺</span><span class="label">RoadTube</span><span class="sub">60% rev</span></a>
-    </div>
-
-    <div class="row-label">Learn</div>
-    <div class="product-row">
-      <a href="https://work.blackroad.io" class="action-card"><span class="icon">📚</span><span class="label">RoadWork</span><span class="sub">Earn</span></a>
-      <a href="https://tutor.blackroad.io" class="action-card"><span class="icon">🧑‍🏫</span><span class="label">Roadie</span><span class="sub">Tutor</span></a>
-      <a href="https://sim.blackroad.io" class="action-card"><span class="icon">⚛️</span><span class="label">Radius</span><span class="sub">Simulate</span></a>
-      <a href="https://book.blackroad.io" class="action-card"><span class="icon">📖</span><span class="label">RoadBook</span><span class="sub">Knowledge</span></a>
-    </div>
-
-    <div class="row-label">Connect</div>
-    <div class="product-row">
-      <a href="https://social.blackroad.io" class="action-card"><span class="icon">👥</span><span class="label">BackRoad</span><span class="sub">Circles of 12</span></a>
-      <a href="https://chat.blackroad.io" class="action-card"><span class="icon">💬</span><span class="label">Chat</span><span class="sub">Talk to AI</span></a>
-      <a href="https://radio.blackroad.io" class="action-card"><span class="icon">🎧</span><span class="label">RoadWave</span><span class="sub">Audio</span></a>
-      <a href="https://live.blackroad.io" class="action-card"><span class="icon">🔴</span><span class="label">BlackCast</span><span class="sub">Stream</span></a>
-      <a href="https://tv.blackroad.io" class="action-card"><span class="icon">📡</span><span class="label">TV Road</span><span class="sub">Watch</span></a>
-    </div>
-
-    <div class="row-label">Build</div>
-    <div class="product-row">
-      <a href="https://roadcode.blackroad.io" class="action-card"><span class="icon">⌨️</span><span class="label">RoadCode</span><span class="sub">615 repos</span></a>
-      <a href="https://garage.blackroad.io" class="action-card"><span class="icon">🔧</span><span class="label">Garage</span><span class="sub">Sandbox</span></a>
-      <a href="https://ci.blackroad.io" class="action-card"><span class="icon">🔄</span><span class="label">Runner</span><span class="sub">CI/CD</span></a>
-      <a href="https://deploy.blackroad.io" class="action-card"><span class="icon">🚀</span><span class="label">Express</span><span class="sub">Ship it</span></a>
-      <a href="https://debug.blackroad.io" class="action-card"><span class="icon">🐛</span><span class="label">Bypass</span><span class="sub">Debug</span></a>
-      <a href="https://auto.blackroad.io" class="action-card"><span class="icon">🤖</span><span class="label">Black Mode</span><span class="sub">Automate</span></a>
-    </div>
-
-    <div class="row-label">Protect</div>
-    <div class="product-row">
-      <a href="https://kids.blackroad.io" class="action-card"><span class="icon">🛡️</span><span class="label">CarSeat</span><span class="sub">Kids safe</span></a>
-      <a href="https://family.blackroad.io" class="action-card"><span class="icon">🏠</span><span class="label">DropOff</span><span class="sub">Family</span></a>
-      <a href="https://firewall.blackroad.io" class="action-card"><span class="icon">🔒</span><span class="label">Roadblock</span><span class="sub">Security</span></a>
-      <a href="https://uptime.blackroad.io" class="action-card"><span class="icon">📊</span><span class="label">GuardRail</span><span class="sub">Uptime</span></a>
-    </div>
-  </div>
-
-  <!-- Live ticker -->
-  <section style="padding:16px;">
-    <div class="row-label">Live Fleet</div>
-    <div class="ticker" id="ticker"></div>
-  </section>
-
-  <!-- Bottom nav bar (mobile app style) -->
-  <div class="bottom-bar">
-    <a href="https://blackroad.io" class="active"><span class="bar-icon">🏠</span>Home</a>
-    <a href="https://chat.blackroad.io"><span class="bar-icon">💬</span>Chat</a>
-    <a href="https://search.blackroad.io"><span class="bar-icon">🔍</span>Search</a>
-    <a href="https://roadcode.blackroad.io"><span class="bar-icon">⌨️</span>Code</a>
-    <a href="https://pay.blackroad.io"><span class="bar-icon">💰</span>Pay</a>
-  </div>
-
-<script>
-// Voice input
-let recognition;
-function toggleVoice() {
-  const btn = document.getElementById('mic');
-  if (!recognition && 'webkitSpeechRecognition' in window) {
-    recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = true;
-    recognition.lang = 'en-US';
-    recognition.onresult = (e) => {
-      const t = Array.from(e.results).map(r => r[0].transcript).join('');
-      document.getElementById('cmd').value = t;
-    };
-    recognition.onend = () => { btn.classList.remove('listening'); btn.textContent = '🎤'; };
-  }
-  if (recognition) {
-    if (btn.classList.contains('listening')) {
-      recognition.stop();
-    } else {
-      recognition.start();
-      btn.classList.add('listening');
-      btn.textContent = '⏹';
+<script src="https://bb.blackroad.io/bb.js" defer></script>
+<meta name="keywords" content="BlackRoad OS, CLI tools, fleet management, Raspberry Pi, WireGuard, Docker Swarm, NATS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BlackRoad OS — 80+ CLI Tools for Fleet Management">
+<meta property="og:description" content="Distributed operating system with 105 CLI tools, WireGuard mesh, Docker Swarm, NATS messaging, and autonomous fleet monitoring across Raspberry Pi clusters.">
+<meta property="og:url" content="https://os.blackroad.io">
+<meta property="og:image" content="https://images.blackroad.io/brand/blackroad-og.png">
+<meta property="og:site_name" content="BlackRoad OS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BlackRoad OS — 80+ CLI Tools for Fleet Management">
+<meta name="twitter:description" content="Distributed operating system with 105 CLI tools, WireGuard mesh, Docker Swarm, NATS messaging, and autonomous fleet monitoring across Raspberry Pi clusters.">
+<meta name="twitter:image" content="https://images.blackroad.io/brand/blackroad-og.png">
+<link rel="canonical" href="https://os.blackroad.io">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BlackRoad OS — 80+ CLI Tools for Fleet Management",
+  "description": "Distributed operating system with 105 CLI tools, WireGuard mesh, Docker Swarm, NATS messaging, and autonomous fleet monitoring across Raspberry Pi clusters.",
+  "url": "https://os.blackroad.io",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Linux, macOS",
+  "author": {
+    "@type": "Organization",
+    "name": "BlackRoad OS, Inc.",
+    "url": "https://blackroad.io",
+    "founder": {
+      "@type": "Person",
+      "name": "Alexa Louise Amundson"
     }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "5.00",
+    "priceCurrency": "USD"
   }
 }
-
-// Command input
-document.getElementById('cmd').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const v = e.target.value.toLowerCase();
-    if (v.includes('chat') || v.includes('talk')) window.location = 'https://chat.blackroad.io';
-    else if (v.includes('code') || v.includes('repo')) window.location = 'https://roadcode.blackroad.io';
-    else if (v.includes('search') || v.includes('find')) window.location = 'https://search.blackroad.io';
-    else if (v.includes('video') || v.includes('edit')) window.location = 'https://video.blackroad.io';
-    else if (v.includes('write') || v.includes('blog')) window.location = 'https://write.blackroad.io';
-    else if (v.includes('music') || v.includes('beat')) window.location = 'https://cadence.blackroad.io';
-    else if (v.includes('game')) window.location = 'https://game.blackroad.io';
-    else if (v.includes('learn') || v.includes('study')) window.location = 'https://tutor.blackroad.io';
-    else if (v.includes('design') || v.includes('canvas')) window.location = 'https://canvas.blackroad.io';
-    else if (v.includes('deploy') || v.includes('ship')) window.location = 'https://deploy.blackroad.io';
-    else window.location = 'https://search.blackroad.io?q=' + encodeURIComponent(e.target.value);
-  }
-});
-
-// Live stats
-async function loadStats() {
-  try {
-    const r = await fetch('/stats/data.json');
-    const d = await r.json();
-    const pills = {repos:'p-repos',agents:'p-agents',sites:'p-sites',tops:'p-tops'};
-    for (const [k,id] of Object.entries(pills)) {
-      const el = document.getElementById(id);
-      if (el && d[k]) el.textContent = parseInt(d[k]).toLocaleString();
-    }
-    // Ticker
-    const ticker = document.getElementById('ticker');
-    const items = [
-      {n:d.repos,l:'Repos'},{n:d.agents,l:'Agents'},{n:d.sites,l:'Sites'},
-      {n:d.devices,l:'Devices'},{n:d.services,l:'Services'},{n:d.domains,l:'Domains'},
-      {n:d.codex_solutions,l:'Solutions'},{n:d.journal_entries,l:'Journal'},
-      {n:d.webhooks,l:'Webhooks'},{n:d.tops,l:'TOPS'}
-    ];
-    ticker.innerHTML = items.map(i =>
-      `<div class="ticker-item"><div class="ticker-num">${parseInt(i.n).toLocaleString()}</div><div class="ticker-label">${i.l}</div></div>`
-    ).join('');
-  } catch(e) {}
-}
-loadStats();
-setInterval(loadStats, 30000);
 </script>
+<link rel="icon" type="image/png" href="https://images.blackroad.io/brand/favicon.png">
+<link rel="apple-touch-icon" href="https://images.blackroad.io/brand/apple-touch-icon.png">
+</head>
+<body>
 
-<!-- SEO CONTENT — visible to crawlers, structured for indexing -->
-<section style="max-width:720px;margin:0 auto;padding:64px 20px;">
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Gradient Bar (top)                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="grad-bar"></div>
 
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;">What is BlackRoad OS?</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;">BlackRoad OS is a sovereign AI operating system that runs entirely on your hardware. Built on a fleet of 5 Raspberry Pi nodes with 52 TOPS of Hailo-8 neural compute, it provides persistent AI memory, local inference, and a complete suite of tools for education, content creation, and knowledge work — all without sending your data to the cloud.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;">Unlike ChatGPT, Claude, or Gemini, BlackRoad OS remembers every conversation across sessions. Your AI tutor knows what your child studied last week. Your code assistant remembers your project architecture. Your search engine understands your context. This cross-session memory is powered by a local SQLite ledger and Qdrant vector database — no cloud required.</p>
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Navigation                           -->
+<!-- Swap: logo text, link labels, CTA labels        -->
+<!-- ═══════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo"><img src="blackroad-logo.png" alt="BlackRoad" style="width:32px;height:32px;border-radius:50%"> BlackRoad OS</div>
+  <div class="nav-links">
+    <a href="#architecture">Architecture</a>
+    <a href="#fleet">Nodes</a>
+    <a href="#deploy">Install</a>
+    <a href="https://github.com/blackboxprogramming/BlackRoad-Operating-System" target="_blank">GitHub</a>
+  </div>
+  <div class="nav-cta">
+    <a class="btn-outline" href="https://blackroad-status.pages.dev" style="text-decoration:none">Status</a>
+    <a class="btn-solid" href="#deploy" style="text-decoration:none">Deploy</a>
+  </div>
+</nav>
 
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;margin-top:48px;">The Problem We're Solving</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;">60% of parents cannot help their children with homework. The global private tutoring market is $124.5 billion because existing edtech doesn't work — IXL shows no significant effect on math achievement, Khan Academy has inconsistent results, and AI chatbots hallucinate and forget context between sessions.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;">Content creators spend 6-10 hours per piece. Video editing takes 2-8 weeks in post-production. Adobe costs $52.99/month and takes months to learn. Canva is too simple for professional work. The gap between having an idea and producing it remains weeks to months.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;">Web search quality is deteriorating — 42% of users find search engines less useful than before, while 1,271 AI-generated content farms pollute results. Privacy violations are business models, not bugs, with the data brokerage industry processing 1.2 trillion records monthly.</p>
-
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;margin-top:48px;">How BlackRoad OS Works</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">Persistent Memory.</strong> Every conversation, preference, and project detail is stored locally. When you come back tomorrow, your AI knows exactly where you left off. No re-explaining. Powered by SQLite + Qdrant on your own hardware.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">Local Inference.</strong> AI models run on Ollama across your Pi fleet. Llama 3, Phi-3, TinyLlama — all local. No API keys, no rate limits, no monthly token caps. Works offline. 52 TOPS of neural compute via Hailo-8 accelerators.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">69 AI Agents.</strong> Specialized agents for tutoring, code review, writing, research, fleet management, security auditing, and more. Each agent has domain expertise and persistent memory. They coordinate through NATS pub/sub messaging.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;"><strong style="color:#d4d4d4;">Privacy First.</strong> Your data never leaves your network. No cloud training, no data harvesting, no surveillance. You own everything. The entire system runs on WireGuard-encrypted mesh networking between your own devices.</p>
-
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;margin-top:48px;">Products</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">Lucidia</strong> — AI companion with infinite memory. Remembers your projects, your preferences, your context across every session. <a href="https://lucidia.earth" style="color:#FFC107;text-decoration:none;">lucidia.earth</a></p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">Roadie Tutor</strong> — AI homework help that actually teaches. Math, science, reading, writing. Adapts to how you learn using the Concrete-Representational-Abstract framework. <a href="https://tutor.blackroad.io" style="color:#FFC107;text-decoration:none;">tutor.blackroad.io</a></p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">RoadWork</strong> — Learn-then-earn education platform. Skills to jobs to growth. AI-guided curriculum with real-world application. <a href="https://roadwork.blackroad.io" style="color:#FFC107;text-decoration:none;">roadwork.blackroad.io</a></p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">Creator Suite</strong> — Video editing (RoadView), design (Canvas Studio), music production (Cadence), and writing tools. Browser-native, powered by WebCodecs and local AI. <a href="https://lucidia.studio" style="color:#FFC107;text-decoration:none;">lucidia.studio</a></p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;"><strong style="color:#d4d4d4;">Genesis Road</strong> — Game engine. Describe what you want, it builds it. Voice-to-game powered by Rust, WebGPU, and Bevy. <a href="https://game.blackroad.io" style="color:#FFC107;text-decoration:none;">game.blackroad.io</a></p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;"><strong style="color:#d4d4d4;">RoadChain</strong> — Sovereign blockchain for transaction verification. Not speculation — utility. Stablecoin payments, smart contracts, decentralized identity. <a href="https://roadchain.io" style="color:#FFC107;text-decoration:none;">roadchain.io</a></p>
-
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;margin-top:48px;">Pricing</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;">One subscription replaces 10+ tools. No per-token charges. No usage caps. Unlimited conversations.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px;">
-<div style="background:#131313;border:1px solid #1a1a1a;border-radius:10px;padding:24px;"><strong style="color:#f5f5f5;font-family:'Space Grotesk',sans-serif;font-size:18px;">Student</strong><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:#f5f5f5;margin:8px 0;">$20<span style="font-size:14px;color:#737373;font-weight:400">/mo</span></div><p style="color:#525252;font-size:13px;">AI tutoring, homework help, persistent memory, STEM visualization, 1 device.</p></div>
-<div style="background:#131313;border:1px solid #FFC107;border-radius:10px;padding:24px;"><strong style="color:#f5f5f5;font-family:'Space Grotesk',sans-serif;font-size:18px;">Family</strong><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:#f5f5f5;margin:8px 0;">$35<span style="font-size:14px;color:#737373;font-weight:400">/mo</span></div><p style="color:#525252;font-size:13px;">Up to 5 members, parent dashboard, progress tracking, multi-device sync.</p></div>
-<div style="background:#131313;border:1px solid #1a1a1a;border-radius:10px;padding:24px;"><strong style="color:#f5f5f5;font-family:'Space Grotesk',sans-serif;font-size:18px;">Pro</strong><div style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:#f5f5f5;margin:8px 0;">$50<span style="font-size:14px;color:#737373;font-weight:400">/mo</span></div><p style="color:#525252;font-size:13px;">Unlimited devices, multi-agent access, API, creator suite, priority support.</p></div>
-</div>
-
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;margin-top:48px;">Infrastructure</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;">BlackRoad OS runs on real hardware. 5 Raspberry Pi nodes (Alice, Cecilia, Octavia, Aria, Lucidia), 2 cloud edge nodes (Gematria, Anastasia), connected via WireGuard encrypted mesh. 52 TOPS of Hailo-8 neural compute. Ollama for local inference with 227+ models. PostgreSQL, Redis, Qdrant, MinIO, NATS — all self-hosted. Gitea for sovereign git hosting (239 repositories). Caddy for TLS termination across 19 custom domains.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;">Total monthly infrastructure cost: under $150. No AWS. No GCP. No Azure. Sovereign computing on hardware you own.</p>
-
-<h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f5f5f5;margin-bottom:16px;margin-top:48px;">The Amundson Framework</h2>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:16px;">BlackRoad OS is built on the Amundson mathematical framework, developed by founder Alexa Louise Amundson. The core function G(n) = n/(1+1/n)^n produces exact integer ratios that form a valid quantum density matrix, generate the Amundson constant (A_G = 1.244331783986725..., computed to over 1 million digits), and connect to the Riemann critical line through the circle x² + y² = 1/e² + 1/4.</p>
-<p style="color:#737373;font-size:15px;line-height:1.7;margin-bottom:24px;">The framework provides the mathematical foundation for agent coordination, routing optimization, and the trinary decision logic used throughout the platform.</p>
-
-<footer style="border-top:1px solid #1a1a1a;padding-top:32px;margin-top:48px;">
-
-<div style="max-width:1200px;margin:0 auto;padding:0 24px;">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:32px;">
-
-<div>
-<h4 style="color:#737373;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">Products</h4>
-<a href="https://chat.blackroad.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Chat — AI Conversations</a>
-<a href="https://search.blackroad.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Search — 7,760 Pages</a>
-<a href="https://roundtrip.blackroad.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">RoundTrip — 30K Agents</a>
-<a href="https://auth.blackroad.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Auth — Identity</a>
-<a href="https://app.blackroad.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">App — Dashboard</a>
-<a href="https://bb.blackroad.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">BlackBoard — Analytics</a>
-</div>
-
-<div>
-<h4 style="color:#737373;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">Ecosystem</h4>
-<a href="https://blackroad.company" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Company</a>
-<a href="https://blackroadai.com" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">AI Platform</a>
-<a href="https://blackroadinc.us" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">US Corporate</a>
-<a href="https://blackroad.me" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Identity</a>
-<a href="https://blackroad.network" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Network</a>
-<a href="https://blackroad.systems" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Systems</a>
-<a href="https://blackboxprogramming.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Developer Tools</a>
-</div>
-
-<div>
-<h4 style="color:#737373;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">Lucidia</h4>
-<a href="https://lucidia.earth" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Lucidia — AI Companion</a>
-<a href="https://lucidia.studio" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Studio — Creative AI</a>
-<a href="https://lucidiaqi.com" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">QI — Quantum Dreaming</a>
-<a href="https://blackroadqi.com" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">BlackRoad QI</a>
-<a href="https://aliceqi.com" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Alice QI</a>
-</div>
-
-<div>
-<h4 style="color:#737373;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;font-family:'JetBrains Mono',monospace;">Quantum & Blockchain</h4>
-<a href="https://blackroadquantum.com" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Quantum Platform</a>
-<a href="https://blackroadquantum.info" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Research</a>
-<a href="https://blackroadquantum.net" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Network</a>
-<a href="https://blackroadquantum.shop" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Hardware Shop</a>
-<a href="https://blackroadquantum.store" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">Digital Store</a>
-<a href="https://roadchain.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">RoadChain</a>
-<a href="https://roadcoin.io" style="display:block;color:#525252;font-size:13px;text-decoration:none;margin-bottom:6px;">RoadCoin</a>
-</div>
-
-</div>
-
-<div style="display:flex;justify-content:center;gap:16px;margin-bottom:16px;">
-<a href="https://github.com/BlackRoad-OS-Inc" style="color:#525252;font-size:12px;text-decoration:none;">GitHub</a>
-<a href="https://github.com/enterprises/blackroad-os" style="color:#525252;font-size:12px;text-decoration:none;">Enterprise</a>
-<a href="https://status.blackroad.io" style="color:#525252;font-size:12px;text-decoration:none;">Status</a>
-<a href="https://pay.blackroad.io" style="color:#525252;font-size:12px;text-decoration:none;">Billing</a>
-<a href="https://images.blackroad.io" style="color:#525252;font-size:12px;text-decoration:none;">Assets</a>
-</div>
-
-<p style="color:#333;font-size:11px;font-family:'JetBrains Mono',monospace;text-align:center;">&copy; 2025-2026 BlackRoad OS, Inc. All rights reserved. Delaware C-Corp. EIN 41-2663817. Founded by Alexa Louise Amundson.</p>
-<p style="color:#262626;font-size:10px;font-family:'JetBrains Mono',monospace;margin-top:8px;text-align:center;">Pave Tomorrow.</p>
-</div>
-
-</footer>
-
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Hero                                 -->
+<!-- Swap: badge, h1, subtitle, CTA labels           -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-badge"><div class="hero-badge-dot"></div> #!/blackroad — 80+ CLI tools · 5 Nodes · 6 Agents</div>
+  <h1>The sovereign operating system</h1>
+  <p>The operator monorepo. 80+ br-* shell scripts, a TypeScript CLI, Python agents, and a Node.js gateway — all running on five Raspberry Pis connected by an encrypted WireGuard mesh. Your chaos is the input.</p>
+  <div class="hero-cta">
+    <a class="btn-lg btn-lg-solid" href="#architecture" style="text-decoration:none">View Architecture</a>
+    <a class="btn-lg btn-lg-outline" href="https://github.com/blackboxprogramming/BlackRoad-Operating-System" target="_blank" style="text-decoration:none">GitHub</a>
+  </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Terminal Preview                     -->
+<!-- Outlined card. Gradient accent bar (decorative) -->
+<!-- Dots are outlined, not filled.                  -->
+<!-- Swap: terminal title, command lines             -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="terminal-wrap">
+  <div class="terminal">
+    <div class="terminal-accent"></div>
+    <div class="terminal-header">
+      <div class="terminal-dot"></div>
+      <div class="terminal-dot"></div>
+      <div class="terminal-dot"></div>
+      <span class="terminal-title">blackroad@alice ~ </span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="prompt">$ </span><span class="cmd">br-fleet.sh status</span></div>
+      <div class="out">alice    .49   ● online   Pi400   gateway, dns, postgres, 65 tunnels</div>
+      <div class="out">cecilia  .96   ○ down     Pi5     hailo-8, ollama×16, cece-api, tts</div>
+      <div class="out">octavia  .100  ● online   Pi5     hailo-8, gitea×207, nvme, swarm</div>
+      <div class="out">aria     .98   ● online   Pi5     portainer, headscale, ollama×6</div>
+      <div class="out">lucidia  .38   ● online   Pi5     334 web apps, github-runners</div>
+      <div><span class="prompt">$ </span><span class="cmd">br-ai.sh "what agents are running?"</span></div>
+      <div class="out">Streaming from cecilia/cece-7b...</div>
+      <div class="out">LUCIDIA (reasoning), ALICE (worker), OCTAVIA (storage),</div>
+      <div class="out">PRISM (analysis), ECHO (relay), CIPHER (security)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Layer Stack                          -->
+<!-- Lined rows (border-top + border-bottom).        -->
+<!-- Outlined tags. No filled backgrounds.           -->
+<!-- Swap: layer numbers, names, descriptions, tags  -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label" id="architecture">Architecture</div>
+  <div class="section-title">System layers</div>
+  <div class="section-desc">Four layers from hardware to application, each self-healing and boot-persistent.</div>
+  <div class="layer-stack">
+    <div class="layer">
+      <div class="layer-num">L1</div>
+      <div><div class="layer-name">Hardware</div><div class="layer-tech"><a href="https://blackroad-infra.pages.dev#fleet" class="layer-tag" style="text-decoration:none">Pi 5</a><a href="https://blackroad-infra.pages.dev#accelerators" class="layer-tag" style="text-decoration:none">Hailo-8</a><span class="layer-tag">NVMe</span></div></div>
+      <div class="layer-desc">Five <a href="https://blackroad-infra.pages.dev#fleet" style="color:var(--white);opacity:.5;text-decoration:underline;text-underline-offset:3px">Raspberry Pi nodes</a> with two <a href="https://blackroad-infra.pages.dev#accelerators" style="color:var(--white);opacity:.5;text-decoration:underline;text-underline-offset:3px">Hailo-8 AI accelerators</a> (52 TOPS), 1TB NVMe, thermal management, power optimization via conservative governors.</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">L2</div>
+      <div><div class="layer-name">Network</div><div class="layer-tech"><span class="layer-tag">WireGuard</span><a href="https://blackroad-systems.pages.dev" class="layer-tag" style="text-decoration:none">Cloudflare</a></div></div>
+      <div class="layer-desc">Encrypted WireGuard mesh (10.8.0.x) connecting all nodes through Anastasia hub. 18 <a href="https://blackroad-systems.pages.dev" style="color:var(--white);opacity:.5;text-decoration:underline;text-underline-offset:3px">Cloudflare tunnels</a> route <a href="https://blackroad-systems.pages.dev#resources" style="color:var(--white);opacity:.5;text-decoration:underline;text-underline-offset:3px">48+ domains</a> to the fleet.</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">L3</div>
+      <div><div class="layer-name">Services</div><div class="layer-tech"><a href="https://blackroad-operator.pages.dev#infrastructure" class="layer-tag" style="text-decoration:none">Docker</a><a href="https://blackroadai-com.pages.dev#models" class="layer-tag" style="text-decoration:none">Ollama</a><span class="layer-tag">Gitea</span></div></div>
+      <div class="layer-desc">Docker Swarm orchestration, <a href="https://blackroadai-com.pages.dev#models" style="color:var(--white);opacity:.5;text-decoration:underline;text-underline-offset:3px">16 Ollama models</a>, self-hosted Gitea with 207 repos, PostgreSQL, Pi-hole DNS, <a href="https://blackroad-assets.pages.dev" style="color:var(--white);opacity:.5;text-decoration:underline;text-underline-offset:3px">MinIO object storage</a>.</div>
+    </div>
+    <div class="layer">
+      <div class="layer-num">L4</div>
+      <div><div class="layer-name">Autonomy</div><div class="layer-tech"><span class="layer-tag">Self-Healing</span></div></div>
+      <div class="layer-desc">Heartbeat checks every minute, healing scripts every five minutes. Automatic service restart, fleet telemetry, power monitoring via cron.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Node Grid                            -->
+<!-- Outlined cards. Gradient avatar ring (decorative)-->
+<!-- Gradient status dot = online, outlined = offline -->
+<!-- Swap: initials, names, roles, stats             -->
+<!-- Use 5 cards (or 3, 6). Never 2 or 4.            -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label" id="fleet">Fleet</div>
+  <div class="section-title">Edge nodes</div>
+  <div class="section-desc">Five Raspberry Pi nodes forming a self-healing WireGuard mesh across the local network.</div>
+  <div class="node-grid">
+    <div class="node-card">
+      <div class="node-avatar"><div class="node-ring"></div>A</div>
+      <div class="node-name">Alice</div>
+      <div class="node-role">Gateway · DNS · PostgreSQL</div>
+      <div class="node-stat">Pi 400 · 192.168.4.49<br>10.8.0.6 · 65+ tunnel routes</div>
+      <div class="node-status"><div class="node-status-dot"></div>Online</div>
+    </div>
+    <div class="node-card">
+      <div class="node-avatar"><div class="node-ring"></div>C</div>
+      <div class="node-name">Cecilia</div>
+      <div class="node-role">AI Inference · TTS · MinIO</div>
+      <div class="node-stat">Pi 5 · 192.168.4.96<br>10.8.0.3 · Hailo-8 (26 TOPS)</div>
+      <div class="node-status"><div class="node-status-dot off"></div>Down</div>
+    </div>
+    <div class="node-card">
+      <div class="node-avatar"><div class="node-ring"></div>O</div>
+      <div class="node-name">Octavia</div>
+      <div class="node-role">Gitea · NVMe · Docker Swarm</div>
+      <div class="node-stat">Pi 5 · 192.168.4.100<br>10.8.0.4 · Hailo-8 (26 TOPS)</div>
+      <div class="node-status"><div class="node-status-dot"></div>Online</div>
+    </div>
+    <div class="node-card">
+      <div class="node-avatar"><div class="node-ring"></div>R</div>
+      <div class="node-name">Aria</div>
+      <div class="node-role">Portainer · Headscale</div>
+      <div class="node-stat">Pi 5 · 192.168.4.98<br>10.8.0.7 · Ollama×6</div>
+      <div class="node-status"><div class="node-status-dot"></div>Online</div>
+    </div>
+    <div class="node-card">
+      <div class="node-avatar"><div class="node-ring"></div>L</div>
+      <div class="node-name">Lucidia</div>
+      <div class="node-role">APIs · Web Apps · DNS</div>
+      <div class="node-stat">Pi 5 · 192.168.4.38<br>10.8.0.5 · 334 web apps</div>
+      <div class="node-status"><div class="node-status-dot"></div>Online</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Install / Code Block                 -->
+<!-- Outlined card with gradient top bar.            -->
+<!-- Swap: language label, code lines                -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label" id="deploy">Deploy</div>
+  <div class="section-title">Quick start</div>
+  <div class="section-desc">Clone the scripts repo and deploy to your Pi fleet in three commands.</div>
+  <div class="install-card">
+    <div class="install-grad"></div>
+    <div class="install-header">
+      <span class="install-lang">bash</span>
+      <button class="install-copy">Copy</button>
+    </div>
+    <div class="install-body">git clone https://github.com/BlackRoad-OS-Inc/blackroad-operator.git<br>cd blackroad-operator<br>npm install<br><br># CLI tools (80+ br-* scripts)<br>./br-fleet.sh status        # SSH into all Pis<br>./br-ai.sh "explain this"   # Stream Ollama prompt<br>./br doctor                  # Full system health check<br>./br deploy --target=all     # Multi-cloud deploy</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: Metrics Bar                          -->
+<!-- Lined (border-top + border-bottom). Always 4.   -->
+<!-- Swap: values and labels                         -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="metrics-bar">
+    <div class="metric"><div class="metric-val">612</div><div class="metric-label">Shell Scripts</div></div>
+    <div class="metric"><div class="metric-val">87</div><div class="metric-label">Python Scripts</div></div>
+    <div class="metric"><div class="metric-val">207</div><div class="metric-label">Git Repos</div></div>
+    <div class="metric"><div class="metric-val">$136</div><div class="metric-label">Monthly Cost</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COMPONENT: CTA Box                              -->
+<!-- Outlined with gradient top bar. Centered.       -->
+<!-- Swap: headline, description, button label       -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="cta">
+  <div class="cta-box">
+    <h2>Deploy sovereign infrastructure</h2>
+    <p><a href="https://finance-blackroad-io.pages.dev#economics" style="color:var(--black);text-decoration:underline;text-underline-offset:3px">$136/month</a> runs what would cost $3,756 in commercial cloud. That's a 96.4% cost reduction.</p>
+    <a class="btn-lg btn-lg-solid" href="#deploy" style="text-decoration:none">Get Started</a>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0">
+  <div class="section-label">Related</div>
+  <div class="section-title">Go deeper</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+    <a href="https://blackroad-infra.pages.dev#fleet" style="text-decoration:none;padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);opacity:.5;display:inline-flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--g135)"></div> 5-Node Hardware Fleet</a>
+    <a href="https://blackroadai-com.pages.dev" style="text-decoration:none;padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);opacity:.5;display:inline-flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--g135)"></div> 6 AI Agents</a>
+    <a href="https://blackroad-systems.pages.dev" style="text-decoration:none;padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);opacity:.5;display:inline-flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--g135)"></div> 100 Cloudflare Pages</a>
+    <a href="https://blackroad-guardian-dashboard.pages.dev" style="text-decoration:none;padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);opacity:.5;display:inline-flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--g135)"></div> Fleet Security</a>
+    <a href="https://blackroad-operator.pages.dev" style="text-decoration:none;padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);opacity:.5;display:inline-flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--g135)"></div> Docker Swarm Orchestration</a>
+    <a href="https://finance-blackroad-io.pages.dev#economics" style="text-decoration:none;padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);opacity:.5;display:inline-flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--g135)"></div> $136/mo Cost Breakdown</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand"><a href="https://blackroad-io.pages.dev" style="color:inherit;text-decoration:none">BlackRoad OS</a></div>
+  <div class="footer-links">
+    <a href="#architecture">Architecture</a>
+    <a href="https://blackroad-infra.pages.dev">Hardware</a>
+    <a href="https://blackroadai-com.pages.dev">AI</a>
+    <a href="https://blackroad-systems.pages.dev">Cloud</a>
+    <a href="https://github.com/blackboxprogramming" target="_blank">GitHub</a>
+    <a href="https://blackroad-io.pages.dev">OS Inc</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 BlackRoad OS. All rights reserved.</div>
+</footer>
+<div class="grad-bar"></div>
+
+<script src="https://blackboard.amundsonalexa.workers.dev/bb.js"></script>
+<!-- BlackRoad Ecosystem Bar -->
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:999;background:#0a0a0a;border-top:1px solid #1a1a1a;padding:8px 0;overflow-x:auto">
+<div style="display:flex;gap:16px;justify-content:center;align-items:center;padding:0 20px;white-space:nowrap">
+<a href="https://blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Home</a>
+<a href="https://portal.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Portal</a>
+<a href="https://search.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Search</a>
+<a href="https://chat.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Chat</a>
+<a href="https://auth.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Auth</a>
+<a href="https://pay.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Pay</a>
+<a href="https://images.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Images</a>
+<a href="https://brand.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Brand</a>
+<a href="https://status.blackroad.io" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">Status</a>
+<a href="https://github.com/BlackRoad-OS-Inc" style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#555;text-decoration:none;transition:color 0.2s">GitHub</a>
+</div>
+</div>
+<div style="height:36px"></div>
+<script>
+// BlackRoad Live Stats
+(function(){
+  const API='https://stats-blackroad.amundsonalexa.workers.dev';
+  async function load(){
+    try{
+      const r=await fetch(API+'/ecosystem');
+      const d=(await r.json())?.data||{};
+      document.querySelectorAll('[data-stat]').forEach(el=>{
+        const v=d[el.dataset.stat];
+        if(v!==undefined)el.textContent=typeof v==='number'?v.toLocaleString():v;
+      });
+    }catch(e){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',load);
+  else load();
+  setInterval(load,60000);
+})();
+</script>
 </body>
 </html>
