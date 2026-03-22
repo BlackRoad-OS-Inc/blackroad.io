@@ -91,10 +91,10 @@ footer .tagline{color:var(--pink);font-size:1.1rem;font-weight:700;margin-bottom
 <h1>Own Your <span>Digital Life</span></h1>
 <p class="sub">BlackRoad OS is sovereign infrastructure for people tired of renting their tools, selling their data, and paying subscriptions that own them back.</p>
 <div class="hero-stats">
-<div class="stat"><div class="num">107</div><div class="label">Products</div></div>
-<div class="stat"><div class="num">7</div><div class="label">Nodes Online</div></div>
-<div class="stat"><div class="num">19</div><div class="label">Live Domains</div></div>
-<div class="stat"><div class="num">$12</div><div class="label">/Month Total Cost</div></div>
+<div class="stat"><div class="num"><span data-live="products">107</span></div><div class="label">Products</div></div>
+<div class="stat"><div class="num"><span data-live="nodes">7</span></div><div class="label">Nodes Online</div></div>
+<div class="stat"><div class="num"><span data-live="domains">19</span></div><div class="label">Live Domains</div></div>
+<div class="stat"><div class="num"><span data-live="cost">$12</span></div><div class="label">/Month Total Cost</div></div>
 </div>
 <div class="cta-row">
 <a href="https://buy.stripe.com/aFadR27Je7tP0m78Mk4Vy0p" class="btn btn-primary">Start for $29/mo</a>
@@ -245,5 +245,20 @@ footer .tagline{color:var(--pink);font-size:1.1rem;font-weight:700;margin-bottom
 </div>
 </footer>
 
+<script>
+(function(){
+  fetch("https://blackroad-live-stats.amundsonalexa.workers.dev/api/stats")
+    .then(r=>r.json()).then(s=>{
+      document.querySelectorAll("[data-live]").forEach(el=>{
+        const k=el.dataset.live;
+        const m={nodes:s.fleet.nodes_online,products:s.products.total,repos:s.products.repos,
+          domains:s.products.domains,agents:s.infra.agents,websites:s.infra.websites,
+          models:s.infra.ollama_models,memory:s.infra.memory,tops:s.infra.tops,
+          cost:"$"+s.company.cost_per_month,codex:s.infra.codex};
+        if(m[k]!==undefined)el.textContent=m[k];
+      });
+    }).catch(()=>{});
+})();
+</script>
 </body>
 </html>
