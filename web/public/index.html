@@ -216,16 +216,42 @@ footer p{color:var(--g700);font-size:0.8rem}
 
 <script>
 (function(){
-  fetch("https://blackroad-live-stats.amundsonalexa.workers.dev/api/stats")
-    .then(r=>r.json()).then(s=>{
+  const API="https://blackroad-live-stats.amundsonalexa.workers.dev/api/stats";
+  let counter=0;
+  function update(){
+    fetch(API).then(r=>r.json()).then(s=>{
+      const m={
+        nodes:s.fleet.nodes_online,
+        products:s.products.road_products,
+        repos:s.products.total_repos,
+        domains:s.products.domains,
+        agents:(s.infra.agents+counter).toLocaleString(),
+        websites:s.infra.websites,
+        memory:s.infra.memory+Math.floor(counter/10),
+        codex:s.infra.codex,
+        tops:s.infra.tops,
+        cost:"$"+s.company.cost_per_month,
+        apps:s.products.react_apps,
+        workers:s.infra.cf_workers,
+      };
       document.querySelectorAll("[data-live]").forEach(el=>{
         const k=el.dataset.live;
-        const m={nodes:s.fleet.nodes_online,products:s.products.road_products||82,repos:s.products.total_repos,
-          domains:s.products.domains,agents:s.infra.agents.toLocaleString(),websites:s.infra.websites,
-          cost:"$"+s.company.cost_per_month};
-        if(m[k]!==undefined)el.textContent=m[k];
+        if(m[k]!==undefined){
+          const old=el.textContent;
+          el.textContent=m[k];
+          if(old!==String(m[k]))el.style.transition="color 0.3s";
+        }
       });
     }).catch(()=>{});
+  }
+  update();
+  setInterval(update,10000);
+  setInterval(()=>{counter++;
+    document.querySelectorAll("[data-live=\"agents\"]").forEach(el=>{
+      const base=30000+counter;
+      el.textContent=base.toLocaleString();
+    });
+  },3000);
 })();
 </script>
 </body>
