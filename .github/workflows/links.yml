@@ -1,0 +1,15 @@
+name: Check Links
+on:
+  schedule:
+    - cron: '0 8 * * 0'  # Weekly Sunday 8am
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress '*.html'
+          fail: true
