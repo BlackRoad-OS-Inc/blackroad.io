@@ -1,5 +1,13 @@
 # blackroad.io
 
+> BlackRoad OS, Inc. — blackroad.io domain repo. Proprietary.
+
+Part of the [BlackRoad OS](https://blackroad.io) ecosystem — [BlackRoad-OS-Inc](https://github.com/BlackRoad-OS-Inc)
+
+---
+
+# blackroad.io
+
 > The master platform for BlackRoad OS — every product, every agent, one entry point.
 
 **Live at [https://blackroad.io](https://blackroad.io)**
